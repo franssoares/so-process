@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I"/home/franss/Área de trabalho/so/processos/include" -isystem /usr/include/opencv4
 
-CXX_FLAGS =  -std=c++11 -Wall -g
+CXX_FLAGS =  -std=c++11 -Wall
 
