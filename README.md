@@ -143,6 +143,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install libopencv-dev #instala: opencv
 sudo apt-get install build-essential #instala: gcc/g++, cmake, pthreads...
+git clone https://github.com/franssoares/so-process.git
 ```
 
 ou
@@ -153,6 +154,7 @@ sudo apt-get upgrade
 sudo apt-get install libopencv-dev #instala: opencv
 sudo apt-get install libpthread-stubs0-dev #instala: pthreads
 sudo apt install cmake #instala: cmake
+git clone https://github.com/franssoares/so-process.git
 ```
 
 **Obs:** Certifique que as instalações estejam nos caminhos: `/usr/lib/x86_64-linux-gnu/libopencv_core.so`  e `/usr/lib/x86_64-linux-gnu/libpthread.so.0`
