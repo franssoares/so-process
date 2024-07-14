@@ -49,10 +49,10 @@ int main() {
     int rows = image.rows;
     int cols = image.cols;
 
-    // Matrizes para Rx, Ry e R
-    Mat Rx(rows, cols, CV_8UC1);
-    Mat Ry(rows, cols, CV_8UC1);
-    Mat R(rows, cols, CV_8UC1);
+    // Inicializa as matrizes Rx, Ry e R com as dimensões da imagem
+    Mat Rx = cv::Mat::zeros(rows, cols, CV_8UC1); // 8U -> uint de 8bits, C1 -> 1 canal (grayscale)
+    Mat Ry = cv::Mat::zeros(rows, cols, CV_8UC1);
+    Mat R = cv::Mat::zeros(rows, cols, CV_8UC1);
 
     // Processo filho para calcular Rx
     pid_t pidRx = fork();

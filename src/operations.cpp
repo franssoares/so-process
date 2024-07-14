@@ -6,13 +6,20 @@
 void calcularRx(const cv::Mat& I, cv::Mat& Rx) {
     int M = I.rows;
     int N = I.cols;
+    int sum;
 
     for (int i = 1; i < M - 1; ++i) {
         for (int j = 1; j < N - 1; ++j) {
-            Rx.at<uchar>(i, j) = static_cast<uchar>(std::abs(
-                (I.at<uchar>(i+1, j-1) + I.at<uchar>(i+1, j) + I.at<uchar>(i+1, j+1)) -
-                (I.at<uchar>(i-1, j-1) + I.at<uchar>(i-1, j) + I.at<uchar>(i-1, j+1))
-            ));
+            sum = (I.at<uchar>(i+1, j-1) + I.at<uchar>(i+1, j) + I.at<uchar>(i+1, j+1)) -
+                (I.at<uchar>(i-1, j-1) + I.at<uchar>(i-1, j) + I.at<uchar>(i-1, j+1));
+            
+            // Calcula o valor absoluto do gradiente
+            sum = std::abs(sum);
+
+            // Garante que o valor esteja no intervalo [0, 255]
+            sum = std::min(sum, 255);
+
+            Rx.at<uchar>(i, j) = static_cast<uchar>(sum);
         }
     }
 }
@@ -21,13 +28,20 @@ void calcularRx(const cv::Mat& I, cv::Mat& Rx) {
 void calcularRy(const cv::Mat& I, cv::Mat& Ry) {
     int M = I.rows;
     int N = I.cols;
+    int sum;
 
     for (int i = 1; i < M - 1; ++i) {
         for (int j = 1; j < N - 1; ++j) {
-            Ry.at<uchar>(i, j) = static_cast<uchar>(std::abs(
-                (I.at<uchar>(i-1, j+1) + I.at<uchar>(i, j+1) + I.at<uchar>(i+1, j+1)) -
-                (I.at<uchar>(i-1, j-1) + I.at<uchar>(i, j-1) + I.at<uchar>(i+1, j-1))
-            ));
+            sum = (I.at<uchar>(i-1, j+1) + I.at<uchar>(i, j+1) + I.at<uchar>(i+1, j+1)) -
+                (I.at<uchar>(i-1, j-1) + I.at<uchar>(i, j-1) + I.at<uchar>(i+1, j-1));
+            
+            // Calcula o valor absoluto do gradiente
+            sum = std::abs(sum);
+
+            // Garante que o valor esteja no intervalo [0, 255]
+            sum = std::min(sum, 255);
+
+            Ry.at<uchar>(i, j) = static_cast<uchar>(sum);
         }
     }
 }
